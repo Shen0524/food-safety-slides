@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食品中毒教學簡報｜托育機構食安培訓</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0e27;--bg2:#11163a;--bg3:#1a2050;
+  --ink:#eef3ff;--ink2:#b8c5e0;--ink3:#7a8bb8;--ink4:#4a5680;
+  --c:#00d4ff;--c2:#ff006e;--warn:#ffb800;--dg:#ff4466;--ok:#00ff88;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans TC',sans-serif;overflow:hidden;height:100vh;width:100vw}
+
+/* ── UI chrome ── */
+#bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--c),var(--c2));transition:width .4s ease;z-index:999}
+#tag{position:fixed;top:14px;left:18px;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--c);letter-spacing:.1em;z-index:999;opacity:.8}
+#pg{position:fixed;bottom:18px;right:22px;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--ink3);z-index:999}
+#hint{position:fixed;bottom:18px;left:22px;font-size:12px;color:var(--ink4);z-index:999}
+
+/* ── Slides ── */
+#deck{position:relative;width:100%;height:100vh}
+.s{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:68px 88px 72px;opacity:0;pointer-events:none;transition:opacity .5s ease,transform .5s ease;transform:translateY(14px);overflow:hidden}
+.s.on{opacity:1;pointer-events:auto;transform:translateY(0)}
+.inn{width:100%;max-width:1280px}
+
+/* ── Typography ── */
+.kk{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--c);letter-spacing:.15em;text-transform:uppercase;margin-bottom:10px}
+h1{font-size:62px;font-weight:900;line-height:1.1;margin-bottom:14px}
+h2{font-size:40px;font-weight:700;line-height:1.2;margin-bottom:10px}
+h3{font-size:21px;font-weight:700;margin-bottom:6px}
+p,li{font-size:21px;line-height:1.6;color:var(--ink2)}
+.ac{color:var(--c);font-weight:700}
+.ac2{color:var(--c2);font-weight:700}
+.wn{color:var(--warn);font-weight:700}
+.dr{color:var(--dg);font-weight:700}
+.gn{color:var(--ok);font-weight:700}
+.sep{width:48px;height:3px;background:linear-gradient(90deg,var(--c),var(--c2));border-radius:2px;margin:12px 0 18px}
+
+/* ── Glass cards ── */
+.gl{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:20px;backdrop-filter:blur(10px)}
+.gl-c{background:rgba(0,212,255,.07);border:1px solid rgba(0,212,255,.2);border-radius:14px;padding:20px}
+.gl-d{background:rgba(255,68,102,.07);border:1px solid rgba(255,68,102,.25);border-radius:14px;padding:20px}
+.gl-w{background:rgba(255,184,0,.07);border:1px solid rgba(255,184,0,.25);border-radius:14px;padding:20px}
+.gl-ok{background:rgba(0,255,136,.06);border:1px solid rgba(0,255,136,.2);border-radius:14px;padding:20px}
+
+/* ── Grid ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.g7{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+.g23{display:grid;grid-template-columns:2fr 3fr;gap:28px;align-items:start}
+.g32{display:grid;grid-template-columns:3fr 2fr;gap:28px;align-items:start}
+
+/* ── Left bars ── */
+.lc{border-left:3px solid var(--c);padding-left:14px}
+.ld{border-left:3px solid var(--dg);padding-left:14px}
+.lw{border-left:3px solid var(--warn);padding-left:14px}
+.lok{border-left:3px solid var(--ok);padding-left:14px}
+
+/* ── Icon list ── */
+.il{list-style:none}
+.il li{display:flex;align-items:flex-start;gap:8px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:15px;color:var(--ink2)}
+.il li:last-child{border-bottom:none}
+.ico{font-size:17px;flex-shrink:0;margin-top:1px}
+
+/* ── Flow ── */
+.flow{display:flex;flex-direction:column;align-items:flex-start;gap:0}
+.fst{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:8px 14px;font-size:14px;min-width:200px}
+.fst.bad{border-color:rgba(255,68,102,.4);background:rgba(255,68,102,.06);color:var(--dg)}
+.fst.res{border-color:rgba(255,184,0,.4);background:rgba(255,184,0,.06);color:var(--warn)}
+.farr{color:var(--c);font-size:19px;margin:2px 0 2px 16px}
+
+/* ── Table ── */
+.tbl{width:100%;border-collapse:collapse}
+.tbl th{text-align:left;padding:8px 12px;font-size:14px;color:var(--c);border-bottom:1px solid rgba(0,212,255,.25);font-family:'JetBrains Mono',monospace;white-space:nowrap}
+.tbl td{padding:8px 12px;font-size:14px;border-bottom:1px solid rgba(255,255,255,.05);color:var(--ink2)}
+.tbl tr:last-child td{border-bottom:none}
+
+/* ── Quiz ── */
+.qcard{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:14px 48px 14px 18px;margin-bottom:10px;cursor:pointer;transition:background .25s;position:relative}
+.qcard:hover{background:rgba(255,255,255,.07)}
+.qq{font-size:16px;color:var(--ink2);line-height:1.4}
+.qn{font-family:'JetBrains Mono',monospace;color:var(--c);font-size:13px;margin-right:6px}
+.qans{display:none;margin-top:8px;padding:8px 12px;border-radius:8px;font-size:14px;line-height:1.4}
+.qans.ok-ans{background:rgba(0,255,136,.1);border:1px solid rgba(0,255,136,.2);color:var(--ok)}
+.qans.ng-ans{background:rgba(255,68,102,.1);border:1px solid rgba(255,68,102,.2);color:var(--dg)}
+.qbadge{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:23px}
+
+/* ── Pathogen cards ── */
+.pc1{background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);border-radius:14px;padding:20px;text-align:center;transition:transform .3s}
+.pc2{background:rgba(255,0,110,.08);border:1px solid rgba(255,0,110,.2);border-radius:14px;padding:20px;text-align:center;transition:transform .3s}
+.pc3{background:rgba(255,184,0,.08);border:1px solid rgba(255,184,0,.2);border-radius:14px;padding:20px;text-align:center;transition:transform .3s}
+.pc4{background:rgba(0,255,136,.08);border:1px solid rgba(0,255,136,.2);border-radius:14px;padding:20px;text-align:center;transition:transform .3s}
+.pc1:hover,.pc2:hover,.pc3:hover,.pc4:hover{transform:translateY(-5px)}
+
+/* ── Chip ── */
+.chip{display:inline-block;padding:3px 10px;border-radius:20px;font-size:13px;font-family:'JetBrains Mono',monospace;margin:2px}
+.chc{background:rgba(0,212,255,.12);color:var(--c);border:1px solid rgba(0,212,255,.25)}
+.chd{background:rgba(255,68,102,.12);color:var(--dg);border:1px solid rgba(255,68,102,.25)}
+.chw{background:rgba(255,184,0,.12);color:var(--warn);border:1px solid rgba(255,184,0,.25)}
+.chg{background:rgba(0,255,136,.12);color:var(--ok);border:1px solid rgba(0,255,136,.25)}
+
+/* ── Backgrounds ── */
+.cbg{position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(0,212,255,.13) 0%,transparent 55%),radial-gradient(ellipse at 15% 80%,rgba(255,0,110,.1) 0%,transparent 50%),var(--bg)}
+.dbg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(0,212,255,.09) 0%,transparent 65%),var(--bg)}
+.rz{position:relative;z-index:1}
+
+/* ── Commit ── */
+.cl{display:flex;align-items:flex-start;gap:14px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.cdot{width:8px;height:8px;border-radius:50%;background:var(--c);flex-shrink:0;margin-top:8px}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<div id="tag">— 引起動機 —</div>
+<div id="pg">1 / 22</div>
+<div id="hint">← → 切頁 · Space 下一頁 · F 全螢幕 · 點擊左右側切頁</div>
+
+<div id="deck">
+
+<!-- ══ 01 COVER ══ -->
+<section class="s on" data-s="1" data-sec="引起動機">
+  <div class="cbg"></div>
+  <div class="inn rz">
+    <div class="kk">🍽️ 托育機構食品安全培訓 · 上下冊合計 120 分鐘</div>
+    <h1>拒絕病從口入<br><span class="ac2">遠離食品中毒威脅</span></h1>
+    <div class="sep"></div>
+    <p style="font-size:23px;margin-bottom:28px;color:var(--ink2)">認識四大病原體　×　WHO 預防要點　×　托育機構實務</p>
+    <div style="display:flex;gap:16px;flex-wrap:wrap">
+      <div class="gl" style="padding:12px 18px"><span style="font-size:15px;color:var(--ink2)">🎯 對象：托育機構餐飲從業人員</span></div>
+      <div class="gl" style="padding:12px 18px"><span style="font-size:15px;color:var(--ink2)">⏱ 課程時間：120 分鐘</span></div>
+      <div class="gl" style="padding:12px 18px"><span style="font-size:15px;color:var(--ink2)">🏛 主辦單位：_______________</span></div>
+      <div class="gl" style="padding:12px 18px"><span style="font-size:15px;color:var(--ink2)">📅 日期：_______________</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 02 課程大綱 ══ -->
+<section class="s" data-s="2" data-sec="引起動機">
+  <div class="inn">
+    <div class="kk">課程大綱</div>
+    <h2>今天我們要學什麼？</h2>
+    <div class="sep"></div>
+    <div class="g3" style="margin-top:8px">
+      <div class="gl-c">
+        <div style="font-size:38px;margin-bottom:12px">🦠</div>
+        <h3>認識四大病原體</h3>
+        <p style="font-size:15px;margin-top:6px">仙人掌桿菌、諾羅病毒、金黃色葡萄球菌、沙門氏菌／腸炎弧菌 — 了解病菌機制與真實案例</p>
+      </div>
+      <div class="gl-w">
+        <div style="font-size:38px;margin-bottom:12px">🛡️</div>
+        <h3>WHO 食安五大要點</h3>
+        <p style="font-size:15px;margin-top:6px">清潔 · 分開 · 煮熟 · 安全溫度 · 安全食材 — 國際標準在托育機構的落地實踐</p>
+      </div>
+      <div class="gl-ok">
+        <div style="font-size:38px;margin-bottom:12px">✏️</div>
+        <h3>互動測驗 + 行動承諾</h3>
+        <p style="font-size:15px;margin-top:6px">是非題即時練習，加深記憶 — 綜合測驗 8 題 + 三大行動承諾簽名</p>
+      </div>
+    </div>
+    <div class="gl-d" style="margin-top:18px;display:flex;align-items:center;gap:12px">
+      <span style="font-size:26px;flex-shrink:0">🚨</span>
+      <p style="font-size:15px;color:var(--dg)">幼兒免疫力弱，脫水速度是成人 <strong>5 倍</strong> — 托育機構是食安第一防線，沒有容錯空間！</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 03 統計數據 ══ -->
+<section class="s" data-s="3" data-sec="引起動機">
+  <div class="inn">
+    <div class="kk">台灣食品安全現況</div>
+    <h2>一個疏忽，可能毀了孩子的健康</h2>
+    <div class="sep"></div>
+    <div class="g23">
+      <div>
+        <div class="g2" style="gap:14px;margin-bottom:14px">
+          <div class="gl-d" style="text-align:center;padding:22px 12px">
+            <div style="font-size:58px;font-weight:900;color:var(--dg);line-height:1;font-family:'JetBrains Mono',monospace">300+</div>
+            <div style="font-size:13px;color:var(--ink3);margin-top:6px">食品中毒案件 / 年</div>
+          </div>
+          <div class="gl-w" style="text-align:center;padding:22px 12px">
+            <div style="font-size:36px;font-weight:900;color:var(--warn);line-height:1;font-family:'JetBrains Mono',monospace">3,000+</div>
+            <div style="font-size:13px;color:var(--ink3);margin-top:6px">患病人數 / 年</div>
+          </div>
+        </div>
+        <div class="gl" style="text-align:center;padding:16px;margin-bottom:14px">
+          <div style="font-size:38px;font-weight:900;color:var(--c2);font-family:'JetBrains Mono',monospace">4～9月</div>
+          <div style="font-size:13px;color:var(--ink3);margin-top:4px">夏季高峰，托育機構群聚風險最高</div>
+        </div>
+        <div class="ld">
+          <p style="font-size:15px;color:var(--dg)">🚨 幼兒脫水速度是成人 <strong>5 倍</strong>，是最高風險族群！</p>
+          <small style="font-size:12px;color:var(--ink4);margin-top:4px;display:block">資料來源：衛生福利部食品藥物管理署</small>
+        </div>
+      </div>
+      <div class="gl">
+        <p style="font-size:14px;color:var(--ink3);margin-bottom:14px">🏆 台灣最常見病原體 TOP 3</p>
+        <div style="padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:12px">
+          <span style="font-size:26px">🥇</span>
+          <div><div style="font-weight:700;font-size:17px">諾羅病毒</div><div style="font-size:13px;color:var(--ink3)">全年皆可，冬春高峰；人傳人為主</div></div>
+        </div>
+        <div style="padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:12px">
+          <span style="font-size:26px">🥈</span>
+          <div><div style="font-weight:700;font-size:17px">仙人掌桿菌</div><div style="font-size:13px;color:var(--ink3)">夏季高峰；米食類、炒飯最常見</div></div>
+        </div>
+        <div style="padding:10px 0;display:flex;align-items:center;gap:12px">
+          <span style="font-size:26px">🥉</span>
+          <div><div style="font-weight:700;font-size:17px">金黃色葡萄球菌</div><div style="font-size:13px;color:var(--ink3)">餐盒、手部汙染；毒素耐熱</div></div>
+        </div>
+        <div class="lc" style="margin-top:14px">
+          <p style="font-size:14px">食品中毒三大類型：<br>
+          <span class="chip chd">🦠 生物性（佔 80%+）</span>
+          <span class="chip chw">🧪 化學性</span>
+          <span class="chip chc">🍄 天然毒素</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 04 食品中毒定義 ══ -->
+<section class="s" data-s="4" data-sec="引起動機">
+  <div class="inn">
+    <div class="kk">法定標準</div>
+    <h2>食品中毒的定義</h2>
+    <div class="sep"></div>
+    <p style="font-size:16px;margin-bottom:18px;color:var(--ink3)">⚖️ 同時符合以下四項條件，才構成法定食品中毒案件</p>
+    <div class="g4" style="margin-bottom:18px">
+      <div class="gl-c" style="text-align:center">
+        <div style="font-size:36px;margin-bottom:10px">👥</div>
+        <h3 style="font-size:17px">人數</h3>
+        <div style="font-size:26px;font-weight:900;color:var(--c);margin:8px 0;font-family:'JetBrains Mono',monospace">2人+</div>
+        <p style="font-size:13px">同一場所、同一食物、相同症狀</p>
+      </div>
+      <div class="gl-d" style="text-align:center">
+        <div style="font-size:36px;margin-bottom:10px">🤢</div>
+        <h3 style="font-size:17px">症狀</h3>
+        <div style="font-size:16px;color:var(--dg);margin:8px 0;font-weight:700">腸胃道症狀</div>
+        <p style="font-size:13px">噁心、嘔吐、腹瀉、腹痛</p>
+      </div>
+      <div class="gl-w" style="text-align:center">
+        <div style="font-size:36px;margin-bottom:10px">⏰</div>
+        <h3 style="font-size:17px">時間</h3>
+        <div style="font-size:16px;color:var(--warn);margin:8px 0;font-weight:700">24～72 小時內</div>
+        <p style="font-size:13px">最短僅 1 小時（依病原不同）</p>
+      </div>
+      <div class="gl" style="text-align:center">
+        <div style="font-size:36px;margin-bottom:10px">🔬</div>
+        <h3 style="font-size:17px">確認</h3>
+        <div style="font-size:16px;color:var(--ink2);margin:8px 0;font-weight:700">排除傳染病</div>
+        <p style="font-size:13px">由醫師或衛生單位調查確認</p>
+      </div>
+    </div>
+    <div class="lc">
+      <p style="font-size:15px">症狀警示：🤢 噁心 ・ 🤮 嘔吐 ・ 💩 腹瀉 ・ 😖 腹痛 ・ 🌡️ 發燒 ・ 😵 頭暈</p>
+      <p style="font-size:15px;margin-top:6px"><strong class="ac">出現 2 個以上症狀，立即就醫並向衛生單位通報！</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 05 幼兒風險 ══ -->
+<section class="s" data-s="5" data-sec="引起動機">
+  <div class="inn">
+    <div class="kk">風險評估</div>
+    <h2>為什麼幼兒特別危險？</h2>
+    <div class="sep"></div>
+    <div class="g2" style="margin-top:8px">
+      <div>
+        <div class="gl-d" style="margin-bottom:14px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="font-size:26px">👶</span><h3 style="font-size:17px">免疫系統尚未成熟</h3></div>
+          <p style="font-size:15px">抵抗病原體能力遠低於成人，少量病菌即可造成嚴重感染</p>
+        </div>
+        <div class="gl-d" style="margin-bottom:14px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="font-size:26px">🏥</span><h3 style="font-size:17px">脫水速度是成人 <span class="dr">5 倍</span></h3></div>
+          <p style="font-size:15px">嘔吐腹瀉後快速脫水，可能在數小時內危及生命</p>
+        </div>
+        <div class="gl-d">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="font-size:26px">😷</span><h3 style="font-size:17px">難以描述不適症狀</h3></div>
+          <p style="font-size:15px">嬰幼兒無法表達哪裡不舒服，容易延誤就醫時機</p>
+        </div>
+      </div>
+      <div>
+        <div class="gl-c" style="text-align:center;padding:28px 20px;margin-bottom:14px">
+          <div style="font-size:72px;font-weight:900;color:var(--c);font-family:'JetBrains Mono',monospace;line-height:1">5×</div>
+          <div style="font-size:16px;font-weight:700;margin-top:8px">幼兒脫水速度</div>
+          <div style="font-size:13px;color:var(--ink3);margin-top:4px">相對於成人的倍率</div>
+        </div>
+        <div class="gl">
+          <p style="font-size:14px;color:var(--ink3);margin-bottom:8px">🏫 托育機構的食安挑戰</p>
+          <ul class="il">
+            <li><span class="ico">🍱</span>大量集中供餐——一旦出問題影響全體幼兒</li>
+            <li><span class="ico">🥣</span>副食品多種食材——交叉汙染風險特別高</li>
+            <li><span class="ico">🤲</span>幼兒手口接觸頻繁——病菌輕易進入身體</li>
+            <li><span class="ico">👨‍🍳</span>一位帶病廚師——可能感染全機構幼兒</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 06 四大病原體 DIVIDER ══ -->
+<section class="s" data-s="6" data-sec="維持注意">
+  <div class="dbg"></div>
+  <div class="inn rz" style="text-align:center">
+    <div class="kk">認識你的敵人 · Know Your Enemy</div>
+    <h1 style="margin-bottom:16px">四大病原體</h1>
+    <p style="font-size:21px;color:var(--ink2);margin-bottom:36px">了解敵人，才能有效預防</p>
+    <div class="g4">
+      <div class="pc1">
+        <div style="font-size:44px;margin-bottom:10px">🌵</div>
+        <div style="font-size:17px;font-weight:700;margin-bottom:4px">仙人掌桿菌</div>
+        <div style="font-size:13px;color:var(--ink3)">炒飯症候群</div>
+      </div>
+      <div class="pc2">
+        <div style="font-size:44px;margin-bottom:10px">🟠</div>
+        <div style="font-size:17px;font-weight:700;margin-bottom:4px">諾羅病毒</div>
+        <div style="font-size:13px;color:var(--ink3)">胃腸型感冒</div>
+      </div>
+      <div class="pc3">
+        <div style="font-size:44px;margin-bottom:10px">👑</div>
+        <div style="font-size:17px;font-weight:700;margin-bottom:4px">金黃色葡萄球菌</div>
+        <div style="font-size:13px;color:var(--ink3)">廚師的隱形炸彈</div>
+      </div>
+      <div class="pc4">
+        <div style="font-size:44px;margin-bottom:10px">🍗🌊</div>
+        <div style="font-size:17px;font-weight:700;margin-bottom:4px">沙門氏菌 & 腸炎弧菌</div>
+        <div style="font-size:13px;color:var(--ink3)">雞蛋 & 海鮮殺手</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 07 仙人掌桿菌 ══ -->
+<section class="s" data-s="7" data-sec="維持注意">
+  <div class="inn">
+    <div class="kk">🌵 病原體 1 / 4</div>
+    <h2>仙人掌桿菌（Bacillus cereus）</h2>
+    <div class="sep"></div>
+    <div class="g23">
+      <div>
+        <div class="gl" style="margin-bottom:14px">
+          <table class="tbl">
+            <tr><th>別名</th><td>炒飯症候群（Fried Rice Syndrome）</td></tr>
+            <tr><th>最愛食物</th><td>米飯、澱粉類、義大利麵</td></tr>
+            <tr><th>繁殖溫度</th><td>15～50°C（最適 30°C）</td></tr>
+            <tr><th>可怕特性</th><td><span class="dr">能產生耐熱毒素！</span></td></tr>
+            <tr><th>嘔吐型潛伏期</th><td>0.5 ～ 6 小時</td></tr>
+            <tr><th>腹瀉型潛伏期</th><td>6 ～ 15 小時</td></tr>
+          </table>
+        </div>
+        <div class="gl-d">
+          <p style="font-size:14px;color:var(--dg)">🔴 關鍵警告：毒素一旦形成，加熱 100°C 也無法消滅！<br>預防的唯一方式 → 不讓細菌有機會繁殖！</p>
+        </div>
+        <div style="margin-top:12px">
+          <div style="font-size:13px;color:var(--ink3);margin-bottom:6px">常見危險場景</div>
+          <ul class="il">
+            <li><span class="ico">❌</span>隔夜飯未冷藏，隔天直接炒</li>
+            <li><span class="ico">❌</span>煮熟的飯放在室溫超過 2 小時</li>
+            <li><span class="ico">✅</span><span class="gn">煮熟後 2 小時內立即冷藏 / 冷凍</span></li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:14px;color:var(--ink3);margin-bottom:12px">危險發生的過程</p>
+        <div class="flow">
+          <div class="fst">🍚 煮熟的米飯</div>
+          <div class="farr">↓</div>
+          <div class="fst bad">⏰ 室溫放置 &gt; 2 小時</div>
+          <div class="farr">↓</div>
+          <div class="fst bad">🦠 細菌大量繁殖</div>
+          <div class="farr">↓</div>
+          <div class="fst bad">☣️ 產生耐熱毒素</div>
+          <div class="farr">↓</div>
+          <div class="fst res">🔥 再加熱 — 無效！毒素殘留！</div>
+        </div>
+        <div class="lw" style="margin-top:14px">
+          <p style="font-size:15px;color:var(--warn)">💡 飯煮好後，室溫存放不超過 <strong>2 小時</strong>！預防才是唯一解方！</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 08 仙人掌案例 ══ -->
+<section class="s" data-s="8" data-sec="維持注意">
+  <div class="inn">
+    <div class="kk">🌵 真實案例 & 預防措施</div>
+    <h2>炒飯症候群案例 + 正確做法</h2>
+    <div class="sep"></div>
+    <div class="g2">
+      <div class="gl-d">
+        <div style="font-size:15px;color:var(--dg);font-weight:700;margin-bottom:12px">🗞️ 台灣幼兒園事件（2022）</div>
+        <ul class="il">
+          <li><span class="ico">📍</span>南台灣某托育機構廚房</li>
+          <li><span class="ico">⏰</span>夏季午餐後約 2 小時發病</li>
+          <li><span class="ico">🍚</span>隔夜飯室溫放置 8 小時以上，直接加熱炒製供餐</li>
+          <li><span class="ico">👶</span>8 名幼兒嘔吐腹痛，2 名送急診</li>
+          <li><span class="ico">🔍</span>仙人掌桿菌耐熱毒素已形成，再加熱完全無效</li>
+        </ul>
+      </div>
+      <div>
+        <div class="gl-ok" style="margin-bottom:14px">
+          <div style="font-size:15px;color:var(--ok);font-weight:700;margin-bottom:10px">✅ 正確預防措施</div>
+          <ul class="il">
+            <li><span class="ico">🕐</span>煮熟後 <strong class="ac">2 小時內</strong>冷藏</li>
+            <li><span class="ico">❄️</span>冷藏（7°C 以下）保存不超過 3 天</li>
+            <li><span class="ico">🌡️</span>復熱確認中心溫度 <strong class="ac">75°C 以上</strong></li>
+            <li><span class="ico">🚫</span>不使用隔夜剩飯炒飯</li>
+            <li><span class="ico">📅</span>托育機構每日新鮮製備</li>
+          </ul>
+        </div>
+        <div class="gl-d" style="padding:14px">
+          <p style="font-size:14px;color:var(--dg)">🔴 毒素一旦形成就無法消除！加熱 100°C 完全無效！<br>唯一方法是：<strong>不讓細菌有機會繁殖</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 09 諾羅病毒 ══ -->
+<section class="s" data-s="9" data-sec="維持注意">
+  <div class="inn">
+    <div class="kk">🟠 病原體 2 / 4</div>
+    <h2>諾羅病毒（Norovirus）</h2>
+    <div class="sep"></div>
+    <div class="g2">
+      <div>
+        <div class="gl" style="margin-bottom:14px">
+          <table class="tbl">
+            <tr><th>傳播途徑</th><td>人傳人、汙染食物、汙染環境表面</td></tr>
+            <tr><th>致病劑量</th><td><span class="dr">只需 10 個病毒顆粒即可致病！</span></td></tr>
+            <tr><th>環境存活</th><td>物體表面存活<span class="dr">數週至數月</span></td></tr>
+            <tr><th>潛伏期</th><td>12 ～ 48 小時</td></tr>
+            <tr><th>好發季節</th><td>秋冬（10月 ～ 翌年 3月）高峰</td></tr>
+          </table>
+        </div>
+        <div class="gl-d">
+          <p style="font-size:14px;color:var(--dg)">🚨 嘔吐物濺灑半徑可達 <strong>3 公尺以上</strong>（氣溶膠傳播）！<br>未充分清潔的環境可持續傳播數週。</p>
+        </div>
+        <div class="lc" style="margin-top:14px">
+          <p style="font-size:14px;color:var(--c)">🗞️ 台中市某幼兒園（2023）：一名幼兒嘔吐，3 天內 12 名幼兒陸續發病，機構停課 2 天。</p>
+        </div>
+      </div>
+      <div>
+        <div class="g2" style="gap:12px;margin-bottom:14px">
+          <div class="gl-d">
+            <div style="font-size:14px;color:var(--dg);font-weight:700;margin-bottom:8px">⚠️ 高風險行為</div>
+            <ul class="il">
+              <li><span class="ico">❌</span>清理嘔吐物時未戴手套</li>
+              <li><span class="ico">❌</span>換尿布後未徹底洗手</li>
+              <li><span class="ico">❌</span>共用毛巾、餐具</li>
+            </ul>
+          </div>
+          <div class="gl-ok">
+            <div style="font-size:14px;color:var(--ok);font-weight:700;margin-bottom:8px">✅ 正確防護</div>
+            <ul class="il">
+              <li><span class="ico">🧤</span>戴手套＋口罩清理</li>
+              <li><span class="ico">🧴</span>含氯漂白水 500ppm 消毒</li>
+              <li><span class="ico">🤲</span>七步洗手法確實執行</li>
+            </ul>
+          </div>
+        </div>
+        <div class="gl-d" style="padding:14px">
+          <p style="font-size:15px;color:var(--dg)">⚠️ <strong>酒精凝膠對諾羅病毒效果有限！</strong><br>必須用肥皂加流動水洗手！</p>
+        </div>
+        <div class="lc" style="margin-top:12px">
+          <p style="font-size:14px">確診幼兒返校條件：嘔吐腹瀉停止後 <strong class="ac">48 小時</strong>才可返校</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 10 七步洗手法 ══ -->
+<section class="s" data-s="10" data-sec="維持注意">
+  <div class="inn">
+    <div class="kk">最重要的防護武器</div>
+    <h2>七步洗手法</h2>
+    <div class="sep"></div>
+    <p style="font-size:16px;margin-bottom:18px">洗手是對抗諾羅病毒最有效的武器！每步至少 5 秒，全程 <span class="ac">20 秒以上</span></p>
+    <div class="g7" style="margin-bottom:18px">
+      <div class="gl-c" style="text-align:center;padding:14px 6px">
+        <div style="font-size:26px;margin-bottom:6px">1️⃣</div>
+        <div style="font-size:23px;font-weight:900;color:var(--c)">內</div>
+        <div style="font-size:13px;color:var(--ink3);margin-top:4px">掌心搓掌心</div>
+      </div>
+      <div class="gl-c" style="text-align:center;padding:14px 6px">
+        <div style="font-size:26px;margin-bottom:6px">2️⃣</div>
+        <div style="font-size:23px;font-weight:900;color:var(--c)">外</div>
+        <div style="font-size:13px;color:var(--ink3);margin-top:4px">手背互搓</div>
+      </div>
+      <div class="gl-c" style="text-align:center;padding:14px 6px">
+        <div style="font-size:26px;margin-bottom:6px">3️⃣</div>
+        <div style="font-size:23px;font-weight:900;color:var(--c)">夾</div>
+        <div style="font-size:13px;color:var(--ink3);margin-top:4px">指縫互搓</div>
+      </div>
+      <div class="gl-c" style="text-align:center;padding:14px 6px">
+        <div style="font-size:26px;margin-bottom:6px">4️⃣</div>
+        <div style="font-size:23px;font-weight:900;color:var(--c)">弓</div>
+        <div style="font-size:13px;color:var(--ink3);margin-top:4px">指背扣掌心</div>
+      </div>
+      <div class="gl-c" style="text-align:center;padding:14px 6px">
+        <div style="font-size:26px;margin-bottom:6px">5️⃣</div>
+        <div style="font-size:23px;font-weight:900;color:var(--c)">大</div>
+        <div style="font-size:13px;color:var(--ink3);margin-top:4px">搓拇指</div>
+      </div>
+      <div class="gl-c" style="text-align:center;padding:14px 6px">
+        <div style="font-size:26px;margin-bottom:6px">6️⃣</div>
+        <div style="font-size:23px;font-weight:900;color:var(--c)">立</div>
+        <div style="font-size:13px;color:var(--ink3);margin-top:4px">指尖搓掌心</div>
+      </div>
+      <div class="gl-c" style="text-align:center;padding:14px 6px">
+        <div style="font-size:26px;margin-bottom:6px">7️⃣</div>
+        <div style="font-size:23px;font-weight:900;color:var(--c)">腕</div>
+        <div style="font-size:13px;color:var(--ink3);margin-top:4px">搓手腕</div>
+      </div>
+    </div>
+    <div class="g2">
+      <div class="ld">
+        <p style="font-size:15px;color:var(--dg)">⚠️ 酒精凝膠對諾羅病毒<strong>效果有限</strong>！<br>必須使用肥皂加流動水！</p>
+      </div>
+      <div class="lok">
+        <p style="font-size:15px;color:var(--ok)">重要洗手時機：上廁所後、吃飯前、處理食物前後、擤鼻涕後、換尿布後、摸動物後</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 11 金黃色葡萄球菌 ══ -->
+<section class="s" data-s="11" data-sec="維持注意">
+  <div class="inn">
+    <div class="kk">👑 病原體 3 / 4</div>
+    <h2>金黃色葡萄球菌（S. aureus）</h2>
+    <div class="sep"></div>
+    <div class="g23">
+      <div>
+        <div class="gl" style="margin-bottom:14px">
+          <table class="tbl">
+            <tr><th>來源</th><td>人體皮膚、鼻腔、喉嚨、<span class="dr">傷口</span></td></tr>
+            <tr><th>高風險族群</th><td>手部有傷口/膿瘡/感冒的廚師</td></tr>
+            <tr><th>毒素</th><td>腸毒素（Enterotoxin）<span class="dr">極度耐熱</span></td></tr>
+            <tr><th>潛伏期</th><td><span class="wn">1 ～ 6 小時（發作極快！）</span></td></tr>
+          </table>
+        </div>
+        <div class="gl-d" style="margin-bottom:12px">
+          <p style="font-size:14px;color:var(--dg)">🔴 腸毒素需要 <strong>120°C 加熱 30 分鐘</strong>才能破壞！<br>一般烹調 100°C 煮沸根本無法消滅！</p>
+        </div>
+        <div>
+          <div style="font-size:13px;color:var(--ink3);margin-bottom:6px">高風險食物類型</div>
+          <span class="chip chd">🍱 餐盒、飯糰</span>
+          <span class="chip chd">🥗 涼拌菜、沙拉</span>
+          <span class="chip chd">🍰 奶油製品</span>
+          <span class="chip chd">🥩 熟肉製品</span>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:14px;color:var(--ink3);margin-bottom:12px">傷口廚師的危機流程</p>
+        <div class="flow">
+          <div class="fst bad">🤕 廚師手部有傷口 / 膿瘡</div>
+          <div class="farr">↓</div>
+          <div class="fst bad">🧤 未戴手套直接接觸食物</div>
+          <div class="farr">↓</div>
+          <div class="fst bad">🦠 細菌汙染食物</div>
+          <div class="farr">↓</div>
+          <div class="fst bad">⏰ 室溫放置 &gt; 2 小時</div>
+          <div class="farr">↓</div>
+          <div class="fst res">☣️ 腸毒素形成，加熱完全無效</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 12 金葡員工健康 ══ -->
+<section class="s" data-s="12" data-sec="維持注意">
+  <div class="inn">
+    <div class="kk">👑 金黃色葡萄球菌：預防 & 管理</div>
+    <h2>員工健康管理 × 熟食安全</h2>
+    <div class="sep"></div>
+    <div class="g2">
+      <div>
+        <div class="gl-d" style="margin-bottom:14px">
+          <div style="font-size:15px;color:var(--dg);font-weight:700;margin-bottom:10px">🚫 禁止事項</div>
+          <ul class="il">
+            <li><span class="ico">❌</span>手部有傷口/膿瘡時接觸食物</li>
+            <li><span class="ico">❌</span>熟食室溫放置超過 2 小時</li>
+            <li><span class="ico">❌</span>發燒/腸胃不適仍進廚房工作</li>
+          </ul>
+        </div>
+        <div class="gl-ok">
+          <div style="font-size:15px;color:var(--ok);font-weight:700;margin-bottom:10px">✅ 必要制度</div>
+          <ul class="il">
+            <li><span class="ico">🩹</span>手部有傷口禁止接觸直接入口食物</li>
+            <li><span class="ico">🧤</span>製備食物必須戴一次性手套並定期更換</li>
+            <li><span class="ico">❄️</span>熟食 2 小時內冷藏或維持 60°C 以上保溫</li>
+            <li><span class="ico">📋</span>員工每日健康申報，主管確認</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="gl" style="margin-bottom:14px">
+          <div style="font-size:15px;color:var(--warn);font-weight:700;margin-bottom:10px">🗞️ 台灣幼兒園便當中毒事件</div>
+          <ul class="il">
+            <li><span class="ico">📍</span>南台灣某托育機構</li>
+            <li><span class="ico">😷</span>廚師手部有膿瘡仍製作飯盒</li>
+            <li><span class="ico">⏰</span>飯盒室溫放置超過 3 小時</li>
+            <li><span class="ico">👶</span>6 名幼兒嘔吐腹瀉，2 名住院補液</li>
+            <li><span class="ico">⚖️</span>廚師停職，機構被衛生局開罰</li>
+          </ul>
+        </div>
+        <div class="lw">
+          <p style="font-size:15px;color:var(--warn)">💡 毒素一旦形成，加熱完全無效。<br>預防唯一方式：<strong>手部衛生 + 冷藏管理 + 員工健康管理</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 13 沙門 & 腸炎弧菌 ══ -->
+<section class="s" data-s="13" data-sec="維持注意">
+  <div class="inn">
+    <div class="kk">🍗🌊 病原體 4 / 4</div>
+    <h2>沙門氏菌 & 腸炎弧菌</h2>
+    <div class="sep"></div>
+    <div class="g2">
+      <div class="gl-ok">
+        <div style="text-align:center;margin-bottom:12px"><span style="font-size:40px">🍗</span><h3 style="font-size:19px;display:inline;margin-left:8px">沙門氏菌 Salmonella</h3></div>
+        <table class="tbl" style="margin-bottom:12px">
+          <tr><th>來源</th><td>生雞蛋外殼、生肉、爬蟲類</td></tr>
+          <tr><th>潛伏期</th><td>6 ～ 72 小時（多數 12～36h）</td></tr>
+          <tr><th>嚴重性</th><td><span class="dr">幼兒可能引發敗血症、腦膜炎</span></td></tr>
+          <tr><th>預防關鍵</th><td><span class="gn">雞蛋必須清洗！生熟食嚴格分開！</span></td></tr>
+        </table>
+        <div class="lok">
+          <p style="font-size:14px;color:var(--ok)">🥚 雞蛋外殼看起來乾淨，但含大量沙門氏菌！<br>使用前必須以流動水清洗外殼！</p>
+        </div>
+      </div>
+      <div class="gl-c">
+        <div style="text-align:center;margin-bottom:12px"><span style="font-size:40px">🌊</span><h3 style="font-size:19px;display:inline;margin-left:8px">腸炎弧菌 Vibrio</h3></div>
+        <table class="tbl" style="margin-bottom:12px">
+          <tr><th>來源</th><td>海鮮：蝦、蟹、生魚片、牡蠣</td></tr>
+          <tr><th>好發季節</th><td><span class="wn">台灣 5 ～ 10 月（夏秋高峰）</span></td></tr>
+          <tr><th>潛伏期</th><td>4 ～ 30 小時（多數 12 小時內）</td></tr>
+          <tr><th>預防關鍵</th><td><span class="ac">10°C 以下停止生長，冷藏有效！</span></td></tr>
+        </table>
+        <div class="lc">
+          <p style="font-size:14px;color:var(--c)">🌊 生熟食交叉汙染是主要感染途徑。<br>海鮮保存 4°C 以下，盡快使用！</p>
+        </div>
+      </div>
+    </div>
+    <div class="gl" style="margin-top:14px;padding:12px 16px">
+      <p style="font-size:14px">🔪 預防交叉汙染：<strong class="ac">紅色砧板</strong>（生肉）・ <strong style="color:var(--warn)">黃色砧板</strong>（熟食）・ <strong class="gn">綠色砧板</strong>（蔬果）・ <strong style="color:#6eb5ff">藍色砧板</strong>（海鮮） — 四色嚴格分開，禁止混用！</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 14 砧板顏色系統 ══ -->
+<section class="s" data-s="14" data-sec="維持注意">
+  <div class="inn">
+    <div class="kk">要點二：生熟食分開</div>
+    <h2>砧板顏色管理系統</h2>
+    <div class="sep"></div>
+    <p style="font-size:16px;margin-bottom:18px;color:var(--ink3)">✂️ 每種顏色對應專用用途，嚴禁混用！交叉汙染一旦發生，無法逆轉。</p>
+    <div class="g4" style="margin-bottom:18px">
+      <div style="background:rgba(220,50,50,.12);border:2px solid rgba(220,50,50,.4);border-radius:12px;padding:20px;text-align:center">
+        <div style="font-size:42px;margin-bottom:10px">🔴</div>
+        <div style="font-size:16px;font-weight:700;color:#ff6666;margin-bottom:8px">紅色砧板</div>
+        <div style="font-size:14px;color:var(--ink3)">生肉類（豬、牛）<br>禽肉（雞、鴨）</div>
+      </div>
+      <div style="background:rgba(220,180,0,.1);border:2px solid rgba(220,180,0,.4);border-radius:12px;padding:20px;text-align:center">
+        <div style="font-size:42px;margin-bottom:10px">🟡</div>
+        <div style="font-size:16px;font-weight:700;color:var(--warn);margin-bottom:8px">黃色砧板</div>
+        <div style="font-size:14px;color:var(--ink3)">熟食處理<br>加工食品</div>
+      </div>
+      <div style="background:rgba(0,180,50,.1);border:2px solid rgba(0,180,50,.35);border-radius:12px;padding:20px;text-align:center">
+        <div style="font-size:42px;margin-bottom:10px">🟢</div>
+        <div style="font-size:16px;font-weight:700;color:var(--ok);margin-bottom:8px">綠色砧板</div>
+        <div style="font-size:14px;color:var(--ink3)">蔬菜、水果類</div>
+      </div>
+      <div style="background:rgba(0,100,220,.12);border:2px solid rgba(0,150,255,.3);border-radius:12px;padding:20px;text-align:center">
+        <div style="font-size:42px;margin-bottom:10px">🔵</div>
+        <div style="font-size:16px;font-weight:700;color:var(--c);margin-bottom:8px">藍色砧板</div>
+        <div style="font-size:14px;color:var(--ink3)">海鮮類（魚、蝦、蟹）</div>
+      </div>
+    </div>
+    <div class="gl" style="padding:16px">
+      <p style="font-size:14px;color:var(--ink3);margin-bottom:10px">🗄️ 冰箱儲存原則</p>
+      <div class="g2">
+        <div class="lok"><p style="font-size:15px;color:var(--ok)">上層：熟食 / 即食食品<br><span style="color:var(--ink3);font-size:13px">防止滴汁汙染下方食物</span></p></div>
+        <div class="ld"><p style="font-size:15px;color:var(--dg)">下層：生肉 / 海鮮<br><span style="color:var(--ink3);font-size:13px">必須加蓋，防止汙染</span></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 15 WHO 五大要點 ══ -->
+<section class="s" data-s="15" data-sec="維持注意">
+  <div class="inn">
+    <div class="kk">國際標準 WHO Five Keys to Safer Food</div>
+    <h2>食品安全五大要點</h2>
+    <div class="sep"></div>
+    <div class="g5" style="margin-top:12px">
+      <div class="gl-c" style="text-align:center">
+        <div style="font-size:36px;margin-bottom:10px">🧼</div>
+        <div style="font-size:16px;font-weight:700;margin-bottom:8px">保持清潔</div>
+        <ul style="list-style:none;font-size:13px;color:var(--ink3);text-align:left;line-height:1.8">
+          <li>✔ 七步洗手法</li>
+          <li>✔ 廚房每日消毒</li>
+          <li>✔ 抹布每日更換</li>
+          <li>✔ 防蟲鼠進入</li>
+        </ul>
+      </div>
+      <div class="gl" style="text-align:center">
+        <div style="font-size:36px;margin-bottom:10px">✂️</div>
+        <div style="font-size:16px;font-weight:700;margin-bottom:8px">生熟食分開</div>
+        <ul style="list-style:none;font-size:13px;color:var(--ink3);text-align:left;line-height:1.8">
+          <li>✔ 四色砧板</li>
+          <li>✔ 冰箱分層儲存</li>
+          <li>✔ 生食容器加蓋</li>
+        </ul>
+      </div>
+      <div class="gl-w" style="text-align:center">
+        <div style="font-size:36px;margin-bottom:10px">🌡️</div>
+        <div style="font-size:16px;font-weight:700;margin-bottom:8px">徹底煮熟</div>
+        <ul style="list-style:none;font-size:13px;color:var(--ink3);text-align:left;line-height:1.8">
+          <li>✔ 中心溫度 <span class="ac">75°C</span></li>
+          <li>✔ 持續 15 秒以上</li>
+          <li>✔ 必備溫度計</li>
+        </ul>
+      </div>
+      <div class="gl-d" style="text-align:center">
+        <div style="font-size:36px;margin-bottom:10px">❄️</div>
+        <div style="font-size:16px;font-weight:700;margin-bottom:8px">安全溫度</div>
+        <ul style="list-style:none;font-size:13px;color:var(--ink3);text-align:left;line-height:1.8">
+          <li>✔ 熱食 <span class="gn">60°C+</span></li>
+          <li>✔ 冷藏 <span class="ac">7°C-</span></li>
+          <li>✔ 危險帶不超 2h</li>
+        </ul>
+      </div>
+      <div class="gl-ok" style="text-align:center">
+        <div style="font-size:36px;margin-bottom:10px">🛒</div>
+        <div style="font-size:16px;font-weight:700;margin-bottom:8px">安全食材</div>
+        <ul style="list-style:none;font-size:13px;color:var(--ink3);text-align:left;line-height:1.8">
+          <li>✔ 有信譽廠商</li>
+          <li>✔ 確認有效期限</li>
+          <li>✔ FIFO 先進先出</li>
+          <li>✔ 確認冷鏈完整</li>
+        </ul>
+      </div>
+    </div>
+    <div class="lc" style="margin-top:16px">
+      <p style="font-size:15px;color:var(--c)">🌍 WHO 五大要點 + 托育機構特殊管理（副食品、配方奶、員工健康），缺一不可。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 16 危險溫度帶 ══ -->
+<section class="s" data-s="16" data-sec="維持注意">
+  <div class="inn">
+    <div class="kk">要點四：安全儲存溫度</div>
+    <h2>危險溫度帶與 2 小時黃金規則</h2>
+    <div class="sep"></div>
+    <div class="g23" style="margin-top:12px">
+      <div>
+        <div style="background:rgba(255,68,102,.12);border:1px solid rgba(255,68,102,.3);border-radius:10px;padding:16px;display:flex;align-items:center;gap:12px;margin-bottom:10px">
+          <span style="font-size:26px;flex-shrink:0">🔴</span>
+          <div>
+            <div style="font-size:16px;font-weight:700;color:var(--dg)">60°C 以上 — 安全熱食區</div>
+            <div style="font-size:13px;color:var(--ink3);margin-top:3px">保溫台、蒸飯箱維持 60°C+，細菌無法繁殖</div>
+          </div>
+        </div>
+        <div style="background:rgba(255,184,0,.12);border:2px solid var(--warn);border-radius:10px;padding:20px;display:flex;align-items:center;gap:12px;margin-bottom:10px">
+          <span style="font-size:28px;flex-shrink:0">⚠️</span>
+          <div>
+            <div style="font-size:19px;font-weight:700;color:var(--warn)">7°C ～ 60°C — 危險溫度帶！</div>
+            <div style="font-size:14px;color:var(--warn);margin-top:4px">細菌最活躍，每 20 分鐘數量可倍增</div>
+            <div style="font-size:14px;color:var(--dg);margin-top:3px;font-weight:700">食物在此溫度帶存放不得超過 2 小時</div>
+          </div>
+        </div>
+        <div style="background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.25);border-radius:10px;padding:16px;display:flex;align-items:center;gap:12px">
+          <span style="font-size:26px;flex-shrink:0">🔵</span>
+          <div>
+            <div style="font-size:16px;font-weight:700;color:var(--c)">7°C 以下 — 冷藏 / 冷凍安全區</div>
+            <div style="font-size:13px;color:var(--ink3);margin-top:3px">冷藏（1～7°C）抑菌 ／ 冷凍（-18°C↓）長期保存</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="gl-w" style="text-align:center;padding:28px 20px;margin-bottom:14px">
+          <div style="font-size:68px;font-weight:900;color:var(--warn);font-family:'JetBrains Mono',monospace;line-height:1">2H</div>
+          <div style="font-size:17px;font-weight:700;margin-top:10px">黃金 2 小時規則</div>
+          <div style="font-size:14px;color:var(--ink3);margin-top:6px;line-height:1.5">食物在危險溫度帶存放不得超過 2 小時<br>（含製備、等待、服務時間累計）</div>
+        </div>
+        <ul class="il">
+          <li><span class="ico">❄️</span>煮熟後 2 小時內冷藏（7°C 以下）</li>
+          <li><span class="ico">🌡️</span>熱食保溫維持 60°C 以上</li>
+          <li><span class="ico">⏰</span>超過 2 小時未食用，立即丟棄</li>
+          <li><span class="ico">🚫</span>反覆取出冷藏食品，累計時間也算</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 17 副食品安全 ══ -->
+<section class="s" data-s="17" data-sec="喚起行動">
+  <div class="inn">
+    <div class="kk">托育機構實務 1 / 3</div>
+    <h2>副食品的安全製備</h2>
+    <div class="sep"></div>
+    <div class="g3" style="margin-top:8px">
+      <div class="gl-c">
+        <div style="font-size:28px;margin-bottom:8px">🤲</div>
+        <h3 style="font-size:16px">七步洗手法</h3>
+        <p style="font-size:14px;margin-top:5px">處理副食品前，確實執行七步洗手法，使用流水和肥皂</p>
+      </div>
+      <div class="gl-c">
+        <div style="font-size:28px;margin-bottom:8px">🍲</div>
+        <h3 style="font-size:16px">以蒸煮為主</h3>
+        <p style="font-size:14px;margin-top:5px">避免油炸等高溫烹調，保留營養且衛生安全</p>
+      </div>
+      <div class="gl-c">
+        <div style="font-size:28px;margin-bottom:8px">🚫</div>
+        <h3 style="font-size:16px">不添加調味料</h3>
+        <p style="font-size:14px;margin-top:5px">不加鹽、糖、蜂蜜（特別注意蜂蜜的肉毒桿菌風險）</p>
+      </div>
+      <div class="gl-ok">
+        <div style="font-size:28px;margin-bottom:8px">🍽️</div>
+        <h3 style="font-size:16px">每次一餐份量</h3>
+        <p style="font-size:14px;margin-top:5px">避免大量製作再多次加熱使用</p>
+      </div>
+      <div class="gl-ok">
+        <div style="font-size:28px;margin-bottom:8px">⏰</div>
+        <h3 style="font-size:16px">解凍後立即食用</h3>
+        <p style="font-size:14px;margin-top:5px">冷凍副食品解凍後立即使用，不可再次冷凍</p>
+      </div>
+      <div class="gl-d">
+        <div style="font-size:28px;margin-bottom:8px">🍯</div>
+        <h3 style="font-size:16px;color:var(--dg)">1 歲以下禁用蜂蜜</h3>
+        <p style="font-size:14px;margin-top:5px;color:var(--dg)">蜂蜜可能含肉毒桿菌孢子，嬰兒無法抵抗！</p>
+      </div>
+    </div>
+    <div class="lw" style="margin-top:14px">
+      <p style="font-size:15px;color:var(--warn)">⚠️ 托育機構副食品製備是食安高風險操作，需要特別嚴格！每次製作前後均需完整洗手。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 18 配方奶&母乳 ══ -->
+<section class="s" data-s="18" data-sec="喚起行動">
+  <div class="inn">
+    <div class="kk">托育機構實務 2 / 3</div>
+    <h2>配方奶 & 母乳的安全管理</h2>
+    <div class="sep"></div>
+    <div class="g2" style="margin-top:8px">
+      <div class="gl-c">
+        <h3 style="margin-bottom:14px;font-size:19px">🍼 配方奶管理</h3>
+        <ul class="il">
+          <li><span class="ico">🌡️</span>沖泡水溫：使用 <strong class="ac">70°C 以上</strong>熱水</li>
+          <li><span class="ico">⏰</span>沖泡後：<strong class="ac">2 小時內</strong>使用完畢</li>
+          <li><span class="ico">📅</span>已開封罐：<strong class="ac">30 天內</strong>用完</li>
+          <li><span class="ico">🧴</span>奶瓶：每次使用後清洗並消毒</li>
+          <li><span class="ico">🚫</span>現沖現喝，不提前沖泡備用</li>
+        </ul>
+      </div>
+      <div class="gl">
+        <h3 style="margin-bottom:14px;font-size:19px">🤱 母乳管理</h3>
+        <ul class="il">
+          <li><span class="ico">🏷️</span>標示：寶寶姓名 + 日期 + 時間</li>
+          <li><span class="ico">❄️</span>冷藏保存：<strong class="gn">72 小時以內</strong>使用</li>
+          <li><span class="ico">🧊</span>冷凍保存：<strong class="gn">3 個月以內</strong>使用</li>
+          <li><span class="ico">💧</span>加熱方式：流動溫水（≤40°C）</li>
+          <li><span class="ico">🚫</span><strong class="dr">嚴禁微波加熱（破壞抗體）</strong></li>
+        </ul>
+      </div>
+    </div>
+    <div class="g2" style="margin-top:14px">
+      <div class="ld">
+        <p style="font-size:15px;color:var(--dg)">🚨 母乳嚴禁微波！微波破壞免疫活性物質，且可能局部過熱燙傷嬰兒。</p>
+      </div>
+      <div class="lc">
+        <p style="font-size:15px;color:var(--c)">💡 每個奶瓶標示清楚，不同寶寶的母乳不可混用。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 19 員工健康管理 ══ -->
+<section class="s" data-s="19" data-sec="喚起行動">
+  <div class="inn">
+    <div class="kk">托育機構實務 3 / 3</div>
+    <h2>員工健康管理規定</h2>
+    <div class="sep"></div>
+    <div class="g2" style="margin-top:8px">
+      <div class="gl-d">
+        <div style="font-size:15px;color:var(--dg);font-weight:700;margin-bottom:12px">🚨 以下情況必須立即停止食品作業</div>
+        <ul class="il">
+          <li><span class="ico">🤢</span>腹瀉、嘔吐症狀（停止後 <strong class="dr">48 小時</strong>才可返回）</li>
+          <li><span class="ico">🤒</span>發燒（體溫 37.5°C 以上）</li>
+          <li><span class="ico">🤕</span>手部或手臂有傷口、膿瘡、皮膚感染</li>
+          <li><span class="ico">🤧</span>感冒（鼻水、打噴嚏會汙染食物）</li>
+          <li><span class="ico">🏥</span>A 型肝炎確診（復工需醫師書面證明）</li>
+        </ul>
+      </div>
+      <div>
+        <div class="gl-ok" style="margin-bottom:14px">
+          <div style="font-size:15px;color:var(--ok);font-weight:700;margin-bottom:10px">✅ 正確制度建立</div>
+          <ul class="il">
+            <li><span class="ico">📋</span>每日上班前健康申報</li>
+            <li><span class="ico">👀</span>主管逐一確認員工健康狀況</li>
+            <li><span class="ico">🔄</span>備用人力安排，不讓病員帶病工作</li>
+            <li><span class="ico">🏥</span>定期健康檢查：每年至少一次</li>
+            <li><span class="ico">🔬</span>含 A 型肝炎抗體、腸道寄生蟲檢查</li>
+          </ul>
+        </div>
+        <div class="lw">
+          <p style="font-size:15px;color:var(--warn)">💡 一位帶病廚師可能感染全機構所有幼兒。<br>寧可人手不足，也不能讓有症狀員工進廚房。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 20 綜合測驗 ══ -->
+<section class="s" data-s="20" data-sec="喚起行動">
+  <div class="inn">
+    <div class="kk">📝 綜合測驗 · 8 題是非題</div>
+    <h2>點擊卡片揭曉答案</h2>
+    <div class="sep"></div>
+    <p style="font-size:13px;color:var(--ink4);margin-bottom:12px">👆 答對一題得一顆星 ⭐　6 顆以上：食安小達人 🏆　8 顆全對：食安大師 🌟</p>
+    <div class="g2">
+      <div class="qcard" onclick="toggleQ(this)">
+        <div class="qq"><span class="qn">Q1</span>炒飯只要當天煮的就安全，室溫放著也沒關係。</div>
+        <div class="qbadge">❓</div>
+        <div class="qans ng-ans">✕ 錯誤：煮熟後室溫超過 2 小時，仙人掌桿菌即可大量繁殖並產生耐熱毒素！</div>
+      </div>
+      <div class="qcard" onclick="toggleQ(this)">
+        <div class="qq"><span class="qn">Q2</span>諾羅病毒可以透過人傳人，清理嘔吐物一定要戴手套。</div>
+        <div class="qbadge">❓</div>
+        <div class="qans ok-ans">○ 正確：嘔吐物含大量病毒，必須戴手套＋口罩，並用含氯漂白水（500ppm）消毒。</div>
+      </div>
+      <div class="qcard" onclick="toggleQ(this)">
+        <div class="qq"><span class="qn">Q3</span>手部有傷口只要戴上手套，就可以正常製備食物。</div>
+        <div class="qbadge">❓</div>
+        <div class="qans ng-ans">✕ 錯誤：手部有傷口/膿瘡時，禁止接觸直接入口食物，戴手套仍有感染風險。</div>
+      </div>
+      <div class="qcard" onclick="toggleQ(this)">
+        <div class="qq"><span class="qn">Q4</span>雞蛋使用前需要用流動水清洗外殼。</div>
+        <div class="qbadge">❓</div>
+        <div class="qans ok-ans">○ 正確：沙門氏菌大量存在於雞蛋外殼，使用前必須以流動水清洗！</div>
+      </div>
+      <div class="qcard" onclick="toggleQ(this)">
+        <div class="qq"><span class="qn">Q5</span>熱食只要維持在 60°C 以上保存，就不會有食品中毒問題。</div>
+        <div class="qbadge">❓</div>
+        <div class="qans ok-ans">○ 正確：60°C 以上細菌無法繁殖，是安全的熱食保存區。</div>
+      </div>
+      <div class="qcard" onclick="toggleQ(this)">
+        <div class="qq"><span class="qn">Q6</span>生食和熟食可以用同一個砧板，只要每次都洗乾淨就好。</div>
+        <div class="qbadge">❓</div>
+        <div class="qans ng-ans">✕ 錯誤：交叉汙染不可逆！生熟食砧板必須嚴格分開，四色砧板是最低標準。</div>
+      </div>
+      <div class="qcard" onclick="toggleQ(this)">
+        <div class="qq"><span class="qn">Q7</span>幼兒食品中毒時，只要在家補充水分休息，不需要就醫。</div>
+        <div class="qbadge">❓</div>
+        <div class="qans ng-ans">✕ 錯誤：幼兒脫水速度是成人 5 倍，必須立即就醫！延誤可能在數小時內危及生命。</div>
+      </div>
+      <div class="qcard" onclick="toggleQ(this)">
+        <div class="qq"><span class="qn">Q8</span>幼兒的食品安全管理比成人需要更嚴格的標準。</div>
+        <div class="qbadge">❓</div>
+        <div class="qans ok-ans">○ 正確：幼兒免疫力弱、脫水快、難以表達不適，需要比成人更嚴格的食安管理。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 21 測驗解析 ══ -->
+<section class="s" data-s="21" data-sec="喚起行動">
+  <div class="inn">
+    <div class="kk">答案總覽</div>
+    <h2>綜合測驗解析</h2>
+    <div class="sep"></div>
+    <table class="tbl" style="margin-top:12px">
+      <thead>
+        <tr><th style="width:36px">#</th><th style="width:56px">答案</th><th>關鍵提醒</th></tr>
+      </thead>
+      <tbody>
+        <tr><td style="font-family:'JetBrains Mono',monospace">Q1</td><td><strong style="color:var(--dg)">✕ 錯</strong></td><td style="font-size:14px">炒飯煮熟後室溫 &gt;2 小時即有仙人掌桿菌耐熱毒素風險</td></tr>
+        <tr><td style="font-family:'JetBrains Mono',monospace">Q2</td><td><strong style="color:var(--ok)">○ 對</strong></td><td style="font-size:14px">諾羅病毒人傳人，清理嘔吐物必須戴手套＋口罩＋含氯漂白水消毒</td></tr>
+        <tr><td style="font-family:'JetBrains Mono',monospace">Q3</td><td><strong style="color:var(--dg)">✕ 錯</strong></td><td style="font-size:14px">手部有傷口膿瘡，禁止接觸食物，戴手套仍有感染風險</td></tr>
+        <tr><td style="font-family:'JetBrains Mono',monospace">Q4</td><td><strong style="color:var(--ok)">○ 對</strong></td><td style="font-size:14px">沙門氏菌存在雞蛋外殼，使用前必須流動水清洗</td></tr>
+        <tr><td style="font-family:'JetBrains Mono',monospace">Q5</td><td><strong style="color:var(--ok)">○ 對</strong></td><td style="font-size:14px">60°C 以上熱食保存，細菌無法繁殖，是安全保存方式</td></tr>
+        <tr><td style="font-family:'JetBrains Mono',monospace">Q6</td><td><strong style="color:var(--dg)">✕ 錯</strong></td><td style="font-size:14px">生熟食砧板必須嚴格分開，交叉汙染不可逆</td></tr>
+        <tr><td style="font-family:'JetBrains Mono',monospace">Q7</td><td><strong style="color:var(--dg)">✕ 錯</strong></td><td style="font-size:14px">幼兒中毒必須立即就醫，脫水速度是成人 5 倍</td></tr>
+        <tr><td style="font-family:'JetBrains Mono',monospace">Q8</td><td><strong style="color:var(--ok)">○ 對</strong></td><td style="font-size:14px">幼兒免疫力弱，需要比成人更嚴格的食安管理標準</td></tr>
+      </tbody>
+    </table>
+    <div class="g3" style="margin-top:16px">
+      <div class="gl" style="text-align:center;padding:14px">
+        <div style="font-size:28px;font-weight:900;color:var(--ok);font-family:'JetBrains Mono',monospace">6+</div>
+        <div style="font-size:13px;color:var(--ink3);margin-top:4px">食安小達人 🏆</div>
+      </div>
+      <div class="gl-c" style="text-align:center;padding:14px">
+        <div style="font-size:28px;font-weight:900;color:var(--c);font-family:'JetBrains Mono',monospace">8/8</div>
+        <div style="font-size:13px;color:var(--ink3);margin-top:4px">食安大師 🌟🌟🌟</div>
+      </div>
+      <div class="gl" style="text-align:center;padding:14px">
+        <div style="font-size:28px;font-weight:900;color:var(--warn);font-family:'JetBrains Mono',monospace">&lt;6</div>
+        <div style="font-size:13px;color:var(--ink3);margin-top:4px">請複習今天的課程 📚</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 22 行動承諾 ══ -->
+<section class="s" data-s="22" data-sec="喚起行動">
+  <div class="dbg"></div>
+  <div class="inn rz">
+    <div class="kk">行動承諾 · 今日課程結語</div>
+    <h2 style="margin-bottom:10px">🌟 從今天開始，我承諾</h2>
+    <div class="sep"></div>
+    <div style="margin-bottom:20px">
+      <div class="cl">
+        <div class="cdot"></div>
+        <div style="font-size:21px;color:var(--ink2)">🤲 每次處理食物前後，確實執行 <strong class="ac">七步洗手法</strong></div>
+      </div>
+      <div class="cl">
+        <div class="cdot"></div>
+        <div style="font-size:21px;color:var(--ink2)">✂️ 嚴格執行 <strong class="ac">生熟食分開</strong>，正確使用四色砧板</div>
+      </div>
+      <div class="cl" style="border:none">
+        <div class="cdot"></div>
+        <div style="font-size:21px;color:var(--ink2)">❄️ 熟食 <strong class="ac">2 小時內冷藏</strong>，不讓食物停留在危險溫度帶</div>
+      </div>
+    </div>
+    <div class="g2" style="margin-bottom:16px">
+      <div class="gl" style="padding:14px">
+        <div style="font-size:13px;color:var(--ink3);margin-bottom:22px">我的承諾簽名</div>
+        <div style="border-bottom:1px solid rgba(255,255,255,.2)"></div>
+      </div>
+      <div class="gl" style="padding:14px">
+        <div style="font-size:13px;color:var(--ink3);margin-bottom:22px">日期</div>
+        <div style="border-bottom:1px solid rgba(255,255,255,.2)"></div>
+      </div>
+    </div>
+    <div class="gl-c" style="padding:14px;margin-bottom:12px">
+      <p style="font-size:14px;color:var(--ink3);margin-bottom:8px">📚 延伸資源</p>
+      <span class="chip chc">衛福部食藥署</span><span style="font-size:13px;color:var(--ink3)"> www.fda.gov.tw</span>
+      <span style="margin:0 10px;color:var(--ink4)">|</span>
+      <span class="chip chc">食品中毒通報專線</span><span style="font-size:13px;color:var(--ink3)"> 1919</span>
+    </div>
+    <p style="text-align:center;font-size:15px;color:var(--ink3)">謝謝您守護每一口的安全！</p>
+    <p style="text-align:center;font-size:13px;color:var(--ink4);margin-top:6px">主辦單位：_______________　講師：_______________　日期：_______________</p>
+  </div>
+</section>
+
+</div><!-- #deck -->
+
+<script>
+const TOTAL = 22;
+let cur = 1;
+const slides = document.querySelectorAll('.s');
+const bar = document.getElementById('bar');
+const tag = document.getElementById('tag');
+const pg  = document.getElementById('pg');
+
+function goTo(n) {
+  if (n < 1 || n > TOTAL) return;
+  slides[cur-1].classList.remove('on');
+  cur = n;
+  const sl = slides[cur-1];
+  sl.classList.add('on');
+  bar.style.width = (cur / TOTAL * 100) + '%';
+  tag.textContent  = '— ' + (sl.dataset.sec || '') + ' —';
+  pg.textContent   = cur + ' / ' + TOTAL;
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ')  { e.preventDefault(); goTo(cur+1); }
+  if (e.key === 'ArrowLeft')                     { e.preventDefault(); goTo(cur-1); }
+  if (e.key.toLowerCase() === 'f') {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(()=>{});
+    else document.exitFullscreen();
+  }
+});
+
+document.addEventListener('click', e => {
+  if (e.target.closest('.qcard')) return;
+  const x = e.clientX / window.innerWidth;
+  if (x > 0.75)      goTo(cur+1);
+  else if (x < 0.25) goTo(cur-1);
+});
+
+function toggleQ(card) {
+  const ans   = card.querySelector('.qans');
+  const badge = card.querySelector('.qbadge');
+  const open  = ans.style.display === 'block';
+  ans.style.display = open ? 'none' : 'block';
+  badge.textContent = open ? '❓' : (ans.classList.contains('ok-ans') ? '✅' : '❌');
+}
+
+goTo(1);
+</script>
+</body>
+</html>
